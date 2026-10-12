@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+
+# Large Datasets (>100MB exceeds GitHub push limits)
+data/
+*.csv
+*.zip
+
+# Streamlit
+.streamlit/
+
+# Local cache
+.cache/
+.ipynb_checkpoints/
