@@ -18,22 +18,25 @@ st.set_page_config(
     page_title="Credit Card Fraud Detection System",
     page_icon="💳",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
-# Custom CSS for modern styling
+# Custom CSS for modern styling + mobile responsiveness
 st.markdown("""
 <style>
+    /* ── Base Styles ── */
     .main-header {
         font-size: 2.2rem;
         font-weight: 800;
         color: #1E293B;
         margin-bottom: 0.2rem;
+        line-height: 1.2;
     }
     .sub-header {
         font-size: 1.05rem;
         color: #64748B;
         margin-bottom: 1.5rem;
+        line-height: 1.5;
     }
     .metric-card {
         background-color: #F8FAFC;
@@ -42,6 +45,7 @@ st.markdown("""
         padding: 1.2rem;
         text-align: center;
         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        margin-bottom: 0.5rem;
     }
     .metric-value {
         font-size: 1.8rem;
@@ -62,6 +66,7 @@ st.markdown("""
         border-radius: 6px;
         font-weight: 700;
         font-size: 0.9rem;
+        display: inline-block;
     }
     .legit-badge {
         background-color: #DCFCE7;
@@ -70,6 +75,77 @@ st.markdown("""
         border-radius: 6px;
         font-weight: 700;
         font-size: 0.9rem;
+        display: inline-block;
+    }
+
+    /* ── Tablet: ≤ 768px ── */
+    @media (max-width: 768px) {
+        .main-header {
+            font-size: 1.5rem;
+        }
+        .sub-header {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .metric-value {
+            font-size: 1.4rem;
+        }
+        /* Make Streamlit columns wrap into 2-column grid */
+        [data-testid="stHorizontalBlock"] {
+            flex-wrap: wrap !important;
+        }
+        [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+            min-width: calc(50% - 0.5rem) !important;
+            flex: 1 1 calc(50% - 0.5rem) !important;
+        }
+    }
+
+    /* ── Mobile: ≤ 480px ── */
+    @media (max-width: 480px) {
+        .main-header {
+            font-size: 1.25rem;
+        }
+        .sub-header {
+            font-size: 0.82rem;
+        }
+        .metric-value {
+            font-size: 1.2rem;
+        }
+        .metric-card {
+            padding: 0.85rem;
+        }
+        /* Stack all columns to full width on phones */
+        [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+            min-width: 100% !important;
+            flex: 1 1 100% !important;
+        }
+        /* Tab labels: allow wrapping */
+        [data-testid="stTabs"] [role="tab"] {
+            font-size: 0.75rem;
+            padding: 0.4rem 0.5rem;
+        }
+        /* Compact number inputs and sliders */
+        [data-testid="stSlider"],
+        [data-testid="stNumberInput"] {
+            font-size: 0.85rem;
+        }
+        /* Ensure images don't overflow */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Button full-width on mobile */
+        [data-testid="stButton"] button {
+            width: 100%;
+        }
+    }
+
+    /* ── General: prevent horizontal scroll ── */
+    .block-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
     }
 </style>
 """, unsafe_allow_html=True)
